@@ -1,18 +1,32 @@
 import random
 
-secret_number = random.randint(1,100)
-attempts = 0
+lowest_num = 1
+highest_num = 100
+answer = random.randint(lowest_num, highest_num)
+guesses = 0
+is_running = True
 
-while True:
-    guess_num = int(input("Enter your guessing number: "))
-    attempts += attempts
+print("Python Number Guessing Game")
+print(f"Select a number between {lowest_num} and {highest_num}")
+
+while is_running:
+    guess = input("Enter your guess: ")
     
-    if guess_num == secret_number:
-        print(f"You Won! Total attempts: {attempts}")
-        break
-    elif guess_num > secret_number:
-        print("Too High!")
-    elif guess_num < secret_number:
-        print("Too Low!")
+    if guess.isdigit():
+        guess = int(guess)
+        guesses += 1
+        
+        if guess < lowest_num or guess > highest_num:
+            print("That number is out of range")
+            print(f"Please select a number between {lowest_num} and {highest_num}")
+        elif guess < answer:
+            print("Too low! try again!")
+        elif guess > answer:
+            print("Too high! try again!")
+        else:
+            print(f"CORRECT! The answer was {answer}")
+            print(f"Number of guesses: {guesses}")
+            is_running = False
     else:
-        print("Invalid input please Enter number between 1 - 100 or q/Q to quit.")
+        print("Invalid guess!")
+        print(f"Please select a number between {lowest_num} and {highest_num}")
