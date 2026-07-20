@@ -23,6 +23,8 @@ while True:
         break
     elif menu.get(food) is not None:
         cart.append(food)
+    else:
+        print(f"Sorry, {food} is not on the menu.")
 
 
 print("----------YOUR ORDER----------")   
